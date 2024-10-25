@@ -1,0 +1,13 @@
+.button {
+    cursor: pointer;
+    font-family: Montserrat;
+    font-weight: 700;
+    box-sizing: border-box;
+    padding: $border-padding;
+    height: $button-height;
+    border-radius: $border-radius;
+
+    @media (max-width: 770px) {
+        height: 70px;
+    }
+}

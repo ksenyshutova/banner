@@ -1,0 +1,45 @@
+.content {
+    margin: 40px auto 50px;
+
+    @include mobile {
+        margin: 0;
+        padding: 20px;
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    &__information {
+        width: 96%;
+    }
+
+    &__highlight {
+        font-weight: 700;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 46px;
+
+        @include mobile {
+            margin-top: 26px;
+        }
+    }
+
+    &__button {
+        color: $color-light;
+        background-color: $color-bright;
+        border: none;
+        width: 38%;
+
+        &--white {
+            color: $color-bright;
+            background-color: $color-light;
+            border: $border;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+.table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $color-table;
+    border-radius: $border-radius;
+    padding: 30px 63px 38px;
+    width: 100%;
+
+    @include mobile {
+        padding: 15px 30px;
+    }
+
+    &__title {
+        text-align: center;
+        width: 64%;
+        margin-bottom: 25px;
+
+        @include mobile {
+            width: 90%;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 18px;
+
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+
+    &__button {
+        flex: 1;
+        background-color: $color-bright;
+        border: none;
+        color: $color-light;
+
+        &--white {
+            flex: 1;
+            background-color: $color-light;
+            border: $border;
+            color: $color-bright;
+        }
+    }
+}

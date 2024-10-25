@@ -1,0 +1,31 @@
+.footer {
+    background-color: $color-blue;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        padding-top: 47px;
+        padding-bottom: 48px;
+
+        @include mobile {
+            padding: 20px;
+        }
+    }
+
+    &__information {
+        font-size: 12px;
+        color: $color-description;
+    }
+
+    &__highlight {
+        color: $color-grey;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    &__copyright {
+        font-size: 12px;
+        color: $color-description;
+    }
+}

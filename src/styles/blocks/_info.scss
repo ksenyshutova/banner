@@ -1,0 +1,15 @@
+.info {
+    margin-bottom: 23px;
+
+    &:before {
+        content: ' ';
+        border: 1px solid $color-table;
+        width: 78%;
+        display: block;
+        margin: 49.5px auto 50.5px;
+
+        @include mobile {
+            margin: 19.5px auto 20.5px;
+        }
+    }
+}

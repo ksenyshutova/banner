@@ -1,0 +1,433 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arial", sans-serif;
+  src: url("../fonts/Arial.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: 0.2s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+    Убираем внутренние отступы слева тегам списков,
+    у которых есть атрибут class
+   */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+    Убираем внешние отступы body и двум другим тегам,
+    у которых есть атрибут class
+   */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+    Убираем внешние отступы вертикали нужным тегам,
+    у которых есть атрибут class
+   */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+    Убираем стандартный маркер маркированному списку,
+    у которого есть атрибут class
+   */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+    Обнуляем вертикальные внешние отступы параграфа,
+    объявляем локальную переменную для внешнего отступа вниз,
+    чтобы избежать взаимодействие с более сложным селектором
+   */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+    Внешний отступ вниз для параграфа без атрибута class,
+    который расположен не последним среди своих соседних элементов
+   */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+    Упрощаем работу с изображениями
+   */
+img {
+  display: block;
+}
+
+/**
+    Наследуем свойства шрифт для полей ввода
+   */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+  height: 100%;
+}
+
+/**
+    Плавный скролл
+   */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+  min-height: 100%;
+  /**
+      Унифицированный интерлиньяж
+     */
+  line-height: 1.5;
+}
+
+/**
+    Приводим к единому цвету svg-элементы
+   */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+    Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+   */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+    Удаляем все анимации и переходы для людей,
+    которые предпочитают их не использовать
+   */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 100px;
+}
+.container--full {
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.header__inner {
+  margin: 30px auto 28px 19px;
+}
+@media (max-width: 650px) {
+  .header__inner {
+    margin: 5px auto;
+  }
+}
+
+.hero {
+  margin: 0 50px;
+}
+@media (max-width: 650px) {
+  .hero {
+    margin: 0;
+    padding: 0;
+  }
+}
+.hero__information {
+  display: flex;
+  justify-content: space-between;
+  padding: 52px 50px;
+  background-color: rgb(244, 245, 247);
+}
+@media (max-width: 650px) {
+  .hero__information {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 14px 50px;
+    gap: 15px;
+  }
+}
+.hero__wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+}
+@media (max-width: 650px) {
+  .hero__wrap {
+    align-items: center;
+  }
+}
+.hero__title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 135%;
+}
+@media (max-width: 650px) {
+  .hero__title {
+    text-align: center;
+  }
+}
+.hero__button {
+  color: rgb(255, 255, 255);
+  background-color: rgb(249, 90, 44);
+  border: none;
+  width: 67%;
+}
+
+.content {
+  margin: 40px auto 50px;
+}
+@media (max-width: 650px) {
+  .content {
+    margin: 0;
+    padding: 20px;
+  }
+}
+.content__title {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.content__information {
+  width: 96%;
+}
+.content__highlight {
+  font-weight: 700;
+}
+.content__btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 46px;
+}
+@media (max-width: 650px) {
+  .content__btn {
+    margin-top: 26px;
+  }
+}
+.content__button {
+  color: rgb(255, 255, 255);
+  background-color: rgb(249, 90, 44);
+  border: none;
+  width: 38%;
+}
+.content__button--white {
+  color: rgb(249, 90, 44);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(249, 90, 44);
+}
+
+.info {
+  margin-bottom: 23px;
+}
+.info:before {
+  content: " ";
+  border: 1px solid rgb(217, 219, 221);
+  width: 78%;
+  display: block;
+  margin: 49.5px auto 50.5px;
+}
+@media (max-width: 650px) {
+  .info:before {
+    margin: 19.5px auto 20.5px;
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(217, 219, 221);
+  border-radius: 8px;
+  padding: 30px 63px 38px;
+  width: 100%;
+}
+@media (max-width: 650px) {
+  .table {
+    padding: 15px 30px;
+  }
+}
+.table__title {
+  text-align: center;
+  width: 64%;
+  margin-bottom: 25px;
+}
+@media (max-width: 650px) {
+  .table__title {
+    width: 90%;
+  }
+}
+.table__btns {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 18px;
+}
+@media (max-width: 650px) {
+  .table__btns {
+    flex-direction: column;
+  }
+}
+.table__button {
+  flex: 1;
+  background-color: rgb(249, 90, 44);
+  border: none;
+  color: rgb(255, 255, 255);
+}
+.table__button--white {
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(249, 90, 44);
+  color: rgb(249, 90, 44);
+}
+
+.button {
+  cursor: pointer;
+  font-family: Montserrat;
+  font-weight: 700;
+  box-sizing: border-box;
+  padding: 14px;
+  height: 50px;
+  border-radius: 8px;
+}
+@media (max-width: 770px) {
+  .button {
+    height: 70px;
+  }
+}
+
+.footer {
+  background-color: rgb(244, 245, 247);
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 47px;
+  padding-bottom: 48px;
+}
+@media (max-width: 650px) {
+  .footer__inner {
+    padding: 20px;
+  }
+}
+.footer__information {
+  font-size: 12px;
+  color: rgb(174, 175, 177);
+}
+.footer__highlight {
+  color: rgb(139, 141, 144);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.footer__copyright {
+  font-size: 12px;
+  color: rgb(174, 175, 177);
+}/*# sourceMappingURL=styles.css.map */

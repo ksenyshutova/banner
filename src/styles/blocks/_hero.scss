@@ -1,0 +1,52 @@
+.hero {
+    margin: 0 50px;
+
+    @include mobile {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__information {
+        display: flex;
+        justify-content: space-between;
+        padding: 52px 50px;
+        background-color: $color-blue;
+
+        @include mobile {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 14px 50px;
+            gap: 15px;
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+
+        @include mobile {
+            align-items: center;
+        }
+    }
+
+    &__title {
+        font-family: Montserrat;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 135%;
+
+        @include mobile {
+            text-align: center;
+        }
+    }
+
+    &__button {
+        color: $color-light;
+        background-color: $color-bright;
+        border: none;
+        width: 67%;
+    }
+}
